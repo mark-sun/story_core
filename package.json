@@ -1,0 +1,27 @@
+{
+  "name": "story_core",
+  "version": "0.0.1",
+  "description": "Api Backend server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mark-sun/story_core.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mark-sun/story_core/issues"
+  },
+  "homepage": "https://github.com/mark-sun/story_core#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongodb": "^2.2.30"
+  }
+}
