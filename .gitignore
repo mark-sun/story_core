@@ -59,4 +59,4 @@ typings/
 
 .vscode/
 
-config/db.js
+config/secret.js

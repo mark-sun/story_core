@@ -10,13 +10,11 @@ function getUser(req, res, db) {
 
 }
 
-
-
 module.exports = function(app, db) {
     app.post('/users', post);
     app.get('/users', (req, res) => {
         console.log(req.body);
-        db.collection('junyan').findOne({}, (err, doc) => {
+        db.collection('collection').findOne({}, (err, doc) => {
             const jsonString = JSON.stringify(doc);
             console.log(jsonString);
             res.json(doc);
