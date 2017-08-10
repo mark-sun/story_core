@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const url = require('./secret').url;
 
-mongoose.connect(url); // connect to database
+mongoose.createConnection(url); // connect to database
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error'));

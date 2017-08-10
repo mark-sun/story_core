@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/mark-sun/story_core#readme",
   "devDependencies": {
+    "eslint": "^4.4.1",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0",
     "nodemon": "^1.11.0"
   },
   "dependencies": {
