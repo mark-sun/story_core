@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const db = require('./config/db');
+
+require('./config/db');
 
 const app = express();
 const router = express.Router();
+const auth = require('./app/routes/authRoutes');
 
 app.use(router);
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,7 +16,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 // add route
-require('./app/routes/root')(app, db);
+app.use('/auth/', auth);
 
 // =======================
 // start the server ======
