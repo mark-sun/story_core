@@ -1,23 +1,9 @@
-
-
-function post(req, res, db) {
-    // You'll create your note here.
-    console.log(req.body);
-    res.send('Hello');
+var User = require('../controller/userController');
+// API Server Endpoints
+module.exports = function (app) {
+    app.use(require('../controller/authController')(req, res, next)),
+        app.post('/User', User.create),
+        app.get('/User/:id', User.get),
+        app.put('/User/:id', User.update)
+    //app.delete('/company/:id', Company.delete)
 }
-
-function getUser(req, res, db) {
-
-}
-
-module.exports = function(app, db) {
-    app.post('/users', post);
-    app.get('/users', (req, res) => {
-        console.log(req.body);
-        db.collection('collection').findOne({}, (err, doc) => {
-            const jsonString = JSON.stringify(doc);
-            console.log(jsonString);
-            res.json(doc);
-        });
-    });
-};
