@@ -18,7 +18,7 @@ function create(req, res) {
     }
     console.log(username, '\t', password);
 
-    User.findOne({ name: username },
+    User.findOne({ username },
         (err, user) => {
             if (err) {
                 console.log(err);

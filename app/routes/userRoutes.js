@@ -1,9 +1,12 @@
-var User = require('../controller/userController');
+const express = require('express');
+
+const router = express.Router();
+
+const User = require('../controllers/userController');
+
+router.post('/', User.create);
+router.get('/:id', User.read);
+router.put('/:id', User.update);
+
 // API Server Endpoints
-module.exports = function (app) {
-    app.use(require('../controller/authController')(req, res, next)),
-        app.post('/User', User.create),
-        app.get('/User/:id', User.get),
-        app.put('/User/:id', User.update)
-    //app.delete('/company/:id', Company.delete)
-}
+module.exports = router;

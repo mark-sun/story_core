@@ -7,6 +7,7 @@ require('./config/db');
 const app = express();
 const router = express.Router();
 const auth = require('./app/routes/authRoutes');
+const user = require('./app/routes/userRoutes');
 
 app.use(router);
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,7 +18,7 @@ app.use(morgan('dev'));
 
 // add route
 app.use('/auth/', auth);
-
+app.use('/user/', user);
 // =======================
 // start the server ======
 // =======================
