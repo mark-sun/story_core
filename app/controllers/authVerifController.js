@@ -20,8 +20,9 @@ function verify(req, res, next) {
                 // if everything is good, save to request for use in other routes
                 req.decoded = decoded;
                 console.log('redirect to', req.decoded);
+                console.log(typeof next);
                 next();
-                res.json({ success: true, message: 'Passed to authenticate token.' });
+                // res.json({ success: true, message: 'Passed to authenticate token.' });
             }
         });
     } else {

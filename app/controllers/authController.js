@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 const User = require('../models/user'); // get our mongoose model
 const secret = require('../../config/secret').secret;
+const Encrypt = require('./encryptionController');
 
 const expire = 60 * 60 * 24;
 
@@ -31,7 +32,7 @@ function create(req, res) {
             } else if (user) {
                 console.log(user);
                 // check if password matches
-                if (user.password !== password) {
+                if (!Encrypt.comparePassword(password, user.password)) {
                     result.success = false;
                     result.message = 'Authentication failed. Wrong password.';
                 } else {

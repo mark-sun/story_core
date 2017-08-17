@@ -1,4 +1,5 @@
 const User = require('../models/user'); // get our mongoose model
+const Encrypt = require('./encryptionController');
 
 function getUser(req, initial = false) {
     let username = '';
@@ -8,10 +9,12 @@ function getUser(req, initial = false) {
     try {
         if (initial) {
             username = req.body.username;
-            password = req.body.password;
+            password = Encrypt.encryptPassword(req.body.password);
         }
         nickname = req.body.nickname;
-        datebirth = new Date(req.body.datebirth);
+        if (req.body.datebirth) {
+            datebirth = new Date(req.body.datebirth);
+        }
     } catch (e) {
         console.log(e);
         return null;
@@ -96,6 +99,7 @@ function read(req, res) {
 
     User.findById(id, (err, obj) => {
         const result = getResponse(err, obj);
+        console.log(result);
         res.json(result);
     });
 }
