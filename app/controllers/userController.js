@@ -22,12 +22,15 @@ function getUser(req, initial = false) {
 
     console.log(username, password);
     const user = {
-        username,
-        password,
         nickname,
         datebirth,
         admin: false,
     };
+
+    if (initial) {
+        user.username = username;
+        user.password = password;
+    }
 
     return user;
 }
@@ -106,7 +109,13 @@ function read(req, res) {
 
 function update(req, res) {
     const id = req.params.id;
-
+    if (id !== req.user) {
+        res.status(403).json({
+            success: false,
+            message: 'Not the same user',
+        });
+        return;
+    }
     console.log('get param name as ', id);
     console.log(typeof id);
 

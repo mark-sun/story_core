@@ -1,14 +1,4 @@
-function get(req, res, db) {
-    // You'll create your note here.
-    console.log(req.body);
-    res.send('Hello');
-}
-
-module.exports = function(app, db) {
-  require('./authRoutes')(app);
-// require('authentication')(app);
-// userRoutes(app, db);
-// Other route groups could go here, in the future
+module.exports = {
 };
 
 

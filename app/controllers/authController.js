@@ -38,7 +38,7 @@ function create(req, res) {
                 } else {
                     // if user is found and password is right
                     // create a token
-                    const token = jwt.sign(user, secret, {
+                    const token = jwt.sign({ id: user.id }, secret, {
                         expiresIn: expire, // expires in 24 hours
                     });
 

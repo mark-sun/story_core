@@ -18,8 +18,8 @@ function verify(req, res, next) {
                 res.json({ success: false, message: 'Failed to authenticate token.' });
             } else {
                 // if everything is good, save to request for use in other routes
-                req.decoded = decoded;
-                console.log('redirect to', req.decoded);
+                req.user = decoded.id;
+                console.log('update as : ', req.user);
                 console.log(typeof next);
                 next();
                 // res.json({ success: true, message: 'Passed to authenticate token.' });
